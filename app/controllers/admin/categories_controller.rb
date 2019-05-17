@@ -1,15 +1,16 @@
 class Admin::CategoriesController < ApplicationController
+  before_filter :authenticate
 
   def index
     @categories = Category.all
   end
 
   def new
-      @category = Category.new
+    @category = Category.new
   end
 
   def create
-      @category = Category.new(category_params)
+    @category = Category.new(category_params)
 
     if @category.save
       redirect_to [:admin, :categories], notice: 'Category created!'
@@ -18,13 +19,12 @@ class Admin::CategoriesController < ApplicationController
     end
   end
 
-    private
+  private
 
   def category_params
     params.require(:category).permit(
       :name
     )
   end
-
 
 end

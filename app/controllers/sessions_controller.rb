@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     redirect_to "/", notice: "logged in!"
     else
       flash.now.alert = "Email or password is invalid"
-      redirect_to '/'
+      redirect_to '/users/new'
   end
 end
 def destroy

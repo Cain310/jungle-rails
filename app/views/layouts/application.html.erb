@@ -7,7 +7,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<% if current_user %>
+  Signed in as <%= current_user.email %> | <%= link_to "Logout", '/logout' %>
+<% end %>
   <%= render 'layouts/top_nav' %>
 
   <main class="container">
